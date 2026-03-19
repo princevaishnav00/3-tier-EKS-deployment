@@ -12,8 +12,8 @@ pipeline {
 
         stage('Build Docker Image'){
             steps{
-                sh 'docker build -t frontend ./app/frontend'
-                sh 'docker build -t backtend ./app/backend'
+                sh ' docker build -t frontend ./app/frontend'
+                sh ' docker build -t backtend ./app/backend'
                 echo 'build stage running'
             }
         }
