@@ -6,7 +6,7 @@ pipeline {
 
         stage('clone code'){
             steps{
-                git 'https://github.com/princevaishnav00/3-tier-EKS-deployment'
+                git clone 'https://github.com/princevaishnav00/3-tier-EKS-deployment'
                 echo 'code clone succesfully '
             }
         }
