@@ -3,6 +3,10 @@ pipeline {
 
     stages{
 
+        triggers {
+                githubPush()
+        }
+
 
         stage('clone code'){
             steps{
