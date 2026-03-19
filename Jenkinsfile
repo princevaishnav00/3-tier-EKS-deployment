@@ -3,23 +3,22 @@ pipeline {
 
     stages{
 
-        stage('clone code'){
+        stage('Clone Code'){
             steps{
-                git branch : 'main' ,
-                    url:'https://github.com/princevaishnav00/3-tier-EKS-deployment'
-                echo ' code clone succesfully'
+                git branch: 'main', url: 'https://github.com/princevaishnav00/3-tier-EKS-deployment.git'
+                echo 'code clone successfully'
             }
         }
 
-        stage('build code'){
+        stage('Build Code'){
             steps{
                 echo 'build stage running'
             }
         }
 
-        stage('push the code '){
+        stage('Push Code'){
             steps{
-                echo "coming "
+                echo "coming"
             }
         }
 
@@ -30,6 +29,4 @@ pipeline {
         }
 
     }
-
-
 }
