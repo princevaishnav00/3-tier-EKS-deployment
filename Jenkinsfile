@@ -1,15 +1,12 @@
 pipeline {
     agent any 
 
-    triggers {
-        githubPush()
-    }
-
     stages{
 
         stage('clone code'){
             steps{
-                git 'https://github.com/princevaishnav00/3-tier-EKS-deployment'
+                git branch : 'main'
+                  url:'https://github.com/princevaishnav00/3-tier-EKS-deployment'
                 echo ' code clone succesfully'
             }
         }
