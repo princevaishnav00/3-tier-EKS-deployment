@@ -18,12 +18,14 @@ pipeline {
         }
 
         stage('push the code '){
-            steps{}
+            steps{
+                echo "coming "
+            }
         }
 
         stage('Deploy'){
             steps{
-
+                 echo "coming soon"
             }
         }
 
