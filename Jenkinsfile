@@ -54,10 +54,11 @@ pipeline {
                 
             sh ' aws eks --region ap-south-1 update-kubeconfig --name 3-tier-cluster '
 
+            
             echo "Deploying Files..."
+            sh 'kubectl apply -f k8s_manifests/'
             sh 'kubectl apply -f k8s_manifests/mongo/'
 
-            sh 'kubectl apply -f k8s_manifests/'
 
 
             echo "update images"
