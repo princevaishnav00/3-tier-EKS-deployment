@@ -26,36 +26,49 @@ pipeline {
             }
         }
 
+
+        stage('Login to ECR'){
+            steps{
+                sh 'aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws '
+                echo ' Login Successfully '
+            }
+        }
+
         stage('Push to ECR'){
             steps{
-               sh '''
-                   echo "Logging into ECR Public..."
+                echo "Tagging images..."
 
-                   aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws
+                sh 'docker tag frontend:$IMAGE_TAG public.ecr.aws/r3z4b9j4/3-tier-frontend:$IMAGE_TAG '
+                sh 'docker tag backend:$IMAGE_TAG public.ecr.aws/r3z4b9j4/3-tier-backend:$IMAGE_TAG '
 
-                   echo "Tagging images..."
+                echo "Pushing images..."
 
-                   docker tag frontend:$IMAGE_TAG public.ecr.aws/r3z4b9j4/3-tier-frontend:$IMAGE_TAG
-                   docker tag backend:$IMAGE_TAG public.ecr.aws/r3z4b9j4/3-tier-backend:$IMAGE_TAG
-
-                   echo "Pushing images..."
-
-                   docker push public.ecr.aws/r3z4b9j4/3-tier-frontend:$IMAGE_TAG
-                   docker push public.ecr.aws/r3z4b9j4/3-tier-backend:$IMAGE_TAG
-                '''
+                sh 'docker push public.ecr.aws/r3z4b9j4/3-tier-frontend:$IMAGE_TAG'
+                sh 'docker push public.ecr.aws/r3z4b9j4/3-tier-backend:$IMAGE_TAG'
+            
             }
         }
 
         stage('Deploy to EKS'){
              steps{
-                  sh '''
-                  echo "Deploying Files..."
-                  kubectl apply -f k8s_manifests/mongo/
+                
+            sh ' aws eks --region ap-south-1 update-kubeconfig --name 3-tier-cluster '
 
-                  kubectl apply -f k8s_manifests/
+            echo "Deploying Files..."
+            sh 'kubectl apply -f k8s_manifests/mongo/'
+
+            sh 'kubectl apply -f k8s_manifests/'
+
+
+            echo "update images"
+            sh 'kubectl set image deployment/api api=public.ecr.aws/r3z4b9j4/3-tier-backend:$IMAGE_TAG -n workshop'
+            sh 'kubectl set image deployment/frontend frontend=public.ecr.aws/r3z4b9j4/3-tier-frontend:$IMAGE_TAG -n workshop'
+
+
+            
           
                  
-                  '''
+            
            }
         }
 
