@@ -53,7 +53,6 @@ pipeline {
                 
             sh ' aws eks --region ap-south-1 update-kubeconfig --name 3-tier-cluster '
 
-            sh ' kubectl create namespace workshop '
                  
             echo "Deploying Files..."
             sh 'kubectl apply -f k8s_manifests/'
