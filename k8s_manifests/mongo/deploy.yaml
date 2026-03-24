@@ -1,15 +1,15 @@
 apiVersion: apps/v1
-kind: StatefulSet
+kind: Deployment
 metadata:
-  namespace: workshop
   name: mongodb
+  namespace: workshop
+  labels:
+    app: mongodb
 spec:
-  serviceName: mongodb-svc
   replicas: 1
   selector:
     matchLabels:
       app: mongodb
-
   template:
     metadata:
       labels:
@@ -20,13 +20,6 @@ spec:
           image: mongo:6.0
           ports:
             - containerPort: 27017
-          resources:
-            requests:
-              memory: "512Mi"
-              cpu: "250m"
-            limits:
-              memory: "1Gi"
-              cpu: "500m"
           env:
             - name: MONGO_INITDB_ROOT_USERNAME
               valueFrom:
@@ -41,13 +34,14 @@ spec:
           volumeMounts:
             - name: mongo-volume
               mountPath: /data/db
-  volumeClaimTemplates:   
-    - metadata:
-        name: mongo-volume
-      spec:
-        accessModes:
-          - ReadWriteOnce
-        storageClassName: gp2
-        resources:
-          requests:
-            storage: 2Gi
+          resources:
+            requests:
+              memory: "512Mi"
+              cpu: "250m"
+            limits:
+              memory: "1Gi"
+              cpu: "500m"
+      volumes:
+        - name: mongo-volume
+          persistentVolumeClaim:
+            claimName: mongo-pvc
