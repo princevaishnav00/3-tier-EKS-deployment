@@ -1,0 +1,61 @@
+name: EKS Deployment
+
+on:
+  push:
+    branches:
+      - main  
+
+env:
+  AWS_REGION: ap-south-1
+  IMAGE_TAG: ${{ github.run_number }}
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      #  Checkout the code
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      #  Configure AWS Credentials
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      #  Login to Amazon ECR
+      - name: Login to ECR
+        run: |
+          aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws
+
+      #  Build Docker images
+      - name: Build Docker Images
+        run: |
+          docker build -t frontend:${{ env.IMAGE_TAG }} ./app/frontend
+          docker build -t backend:${{ env.IMAGE_TAG }} ./app/backend
+
+      #  Tag & Push Docker images to ECR
+      - name: Push Docker Images
+        run: |
+          docker tag frontend:${{ env.IMAGE_TAG }} public.ecr.aws/r3z4b9j4/3-tier-frontend:${{ env.IMAGE_TAG }}
+          docker tag backend:${{ env.IMAGE_TAG }} public.ecr.aws/r3z4b9j4/3-tier-backend:${{ env.IMAGE_TAG }}
+          docker push public.ecr.aws/r3z4b9j4/3-tier-frontend:${{ env.IMAGE_TAG }}
+          docker push public.ecr.aws/r3z4b9j4/3-tier-backend:${{ env.IMAGE_TAG }}
+
+      #  Configure kubectl to connect EKS
+      - name: Update kubeconfig
+        run: |
+          aws eks --region ${AWS_REGION} update-kubeconfig --name 3-tier-cluster
+
+      #  Deploy to EKS
+      - name: Deploy to EKS
+        run: |
+          kubectl apply -f k8s_manifests/
+          kubectl apply -f k8s_manifests/mongo/
+
+          kubectl set image deployment/api api=public.ecr.aws/r3z4b9j4/3-tier-backend:${{ env.IMAGE_TAG }} -n workshop
+
+          kubectl set image deployment/frontend frontend=public.ecr.aws/r3z4b9j4/3-tier-frontend:${{ env.IMAGE_TAG }} -n workshop
