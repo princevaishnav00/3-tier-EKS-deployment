@@ -2,7 +2,6 @@ pipeline {
     agent any 
 
 
-
     environment {
         IMAGE_TAG = "${BUILD_NUMBER}"
     }
@@ -30,13 +29,13 @@ pipeline {
         stage('Login to ECR'){
             steps{
                 sh 'aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws '
-                echo ' Login Successfully '
+                echo 'Login Successfully '
             }
         }
 
         stage('Push to ECR'){
             steps{
-                echo "Tagging images..."
+                echo " Tagging images..."
 
                 sh 'docker tag frontend:$IMAGE_TAG public.ecr.aws/r3z4b9j4/3-tier-frontend:$IMAGE_TAG '
                 sh 'docker tag backend:$IMAGE_TAG public.ecr.aws/r3z4b9j4/3-tier-backend:$IMAGE_TAG '
@@ -63,6 +62,7 @@ pipeline {
 
             echo "update images"
             sh 'kubectl set image deployment/api api=public.ecr.aws/r3z4b9j4/3-tier-backend:$IMAGE_TAG -n workshop'
+            
             sh 'kubectl set image deployment/frontend frontend=public.ecr.aws/r3z4b9j4/3-tier-frontend:$IMAGE_TAG -n workshop'
 
 

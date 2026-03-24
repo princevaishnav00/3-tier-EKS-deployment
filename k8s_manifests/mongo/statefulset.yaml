@@ -1,9 +1,10 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   namespace: workshop
   name: mongodb
 spec:
+  serviceName: mongodb-svc
   replicas: 1
   selector:
     matchLabels:
@@ -15,15 +16,7 @@ spec:
     spec:
       containers:
       - name: mongodb
-        image: mongo:4.4.6
-        command:
-            - "numactl"
-            - "--interleave=all"
-            - "mongod"
-            - "--wiredTigerCacheSizeGB"
-            - "0.1"
-            - "--bind_ip"
-            - "0.0.0.0"
+        image: mongo:6.0
         ports:
         - containerPort: 27017
         resources:
@@ -44,10 +37,15 @@ spec:
               secretKeyRef:
                 name: mongo-sec
                 key: password
-      #   volumeMounts:
-      #     - name: mongo-volume
-      #       mountPath: /data/db
-      # volumes:
-      # - name: mongo-volume
-      #   persistentVolumeClaim:
-      #     claimName: mongo-volume-claim
+        volumeMounts:
+          - name: mongo-volume
+            mountPath: /data/db
+    volumeClaimTemplates:
+    - metadata:
+        name: mongo-volume
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        resources:
+          requests:
+            storage: 2Gi
+     

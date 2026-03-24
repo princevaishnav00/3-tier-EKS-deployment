@@ -28,6 +28,6 @@ spec:
         env:
           - name: REACT_APP_BACKEND_URL
             value: "/api/tasks"
-        ports:
+        ports:  
         - containerPort: 3000
         
