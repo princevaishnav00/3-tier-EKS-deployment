@@ -4,6 +4,8 @@ pipeline {
 
     environment {
         IMAGE_TAG = "${BUILD_NUMBER}"
+        ECR_FRONTEND = "public.ecr.aws/r3z4b9j4/3-tier-frontend"
+        ECR_BACKEND = "public.ecr.aws/r3z4b9j4/3-tier-backend"
     }
 
 
@@ -35,41 +37,48 @@ pipeline {
 
         stage('Push to ECR'){
             steps{
-                echo " Tagging images..."
+                echo " Tagging images.."
 
-                sh 'docker tag frontend:$IMAGE_TAG public.ecr.aws/r3z4b9j4/3-tier-frontend:$IMAGE_TAG '
-                sh 'docker tag backend:$IMAGE_TAG public.ecr.aws/r3z4b9j4/3-tier-backend:$IMAGE_TAG '
+                sh 'docker tag frontend:$IMAGE_TAG $ECR_FRONTEND:$IMAGE_TAG '
+                sh 'docker tag backend:$IMAGE_TAG $ECR_BACKEND:$IMAGE_TAG '
 
                 echo "Pushing images..."
 
-                sh 'docker push public.ecr.aws/r3z4b9j4/3-tier-frontend:$IMAGE_TAG'
-                sh 'docker push public.ecr.aws/r3z4b9j4/3-tier-backend:$IMAGE_TAG'
+                sh 'docker push $ECR_FRONTEND:$IMAGE_TAG'
+                sh 'docker push $ECR_BACKEND:$IMAGE_TAG'
+
+                echo 'Images pushed to ECR'
             
             }
         }
 
-        stage('Deploy to EKS'){
-             steps{
+        stage(' Update manifest files'){
+            steps { withCredentials([usernamePassword(credentialsId: 'githubcred', usernameVariable: 'GIT_USER', passwordVariable: 'GIT_PASS')]) 
+            
+            {
                 
-            sh ' aws eks --region ap-south-1 update-kubeconfig --name 3-tier-cluster '
+            sh '''
+            git clone https://github.com/princevaishnav00/3-tier-EKS-deployment.git 
 
-            
-            echo "Deploying Files..."
-            sh 'kubectl apply -f k8s_manifests/'
-            sh 'kubectl apply -f k8s_manifests/mongo/'
+            cd k8s_manifests
 
-
-
-            echo "update images"
-            sh 'kubectl set image deployment/api api=public.ecr.aws/r3z4b9j4/3-tier-backend:$IMAGE_TAG -n workshop'
-            
-            sh 'kubectl set image deployment/frontend frontend=public.ecr.aws/r3z4b9j4/3-tier-frontend:$IMAGE_TAG -n workshop'
+            # Update backend image
+            sed -i "s|image: .*backend.*|image: public.ecr.aws/r3z4b9j4/3-tier-backend:${BUILD_NUMBER}|g" k8s/api-deployment.yaml
 
 
-            
-          
-                 
-            
+            # Update frontend image
+            sed -i "s|image: .*frontend.*|image: public.ecr.aws/r3z4b9j4/3-tier-frontend:${BUILD_NUMBER}|g" k8s/frontend-deployment.yaml
+              
+
+            # changes 
+            git add .
+            git commit -m "Update images to $IMAGE_TAG"
+            git push https://github.com/princevaishnav00/3-tier-EKS-deployment.git 
+
+
+            '''
+            }
+                  
            }
         }
 
