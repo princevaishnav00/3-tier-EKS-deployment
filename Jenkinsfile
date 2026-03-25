@@ -58,29 +58,22 @@ pipeline {
             {
                 
             sh '''
-            git clone https://github.com/princevaishnav00/3-tier-EKS-deployment.git 
+            git clone  https://$GIT_USER:$GIT_PASS@github.com/princevaishnav00/3-tier-k8s-manifests.git manifests
 
-<<<<<<< HEAD
-            cd k8s_manifests
+            cd manifests/k8s
 
             # Update backend image
-            sed -i "s|image: .*backend.*|image: public.ecr.aws/r3z4b9j4/3-tier-backend:${BUILD_NUMBER}|g" k8s/api-deployment.yaml
-=======
-                 
-            echo "Deploying Files..."
-            sh 'kubectl apply -f k8s_manifests/'
-            sh 'kubectl apply -f k8s_manifests/mongo/'
->>>>>>> 603435953e34595dd0acd856749afe70ec2c507f
+            sed -i "s|image: .*backend.*|image: public.ecr.aws/r3z4b9j4/3-tier-backend:${BUILD_NUMBER}|g" api-deployment.yaml
 
 
             # Update frontend image
-            sed -i "s|image: .*frontend.*|image: public.ecr.aws/r3z4b9j4/3-tier-frontend:${BUILD_NUMBER}|g" k8s/frontend-deployment.yaml
+            sed -i "s|image: .*frontend.*|image: public.ecr.aws/r3z4b9j4/3-tier-frontend:${BUILD_NUMBER}|g" frontend-deployment.yaml
               
 
             # changes 
             git add .
             git commit -m "Update images to $IMAGE_TAG"
-            git push https://github.com/princevaishnav00/3-tier-EKS-deployment.git 
+            git push https://$GIT_USER:$GIT_PASS@github.com/princevaishnav00/3-tier-k8s-manifests.git
 
 
             '''
