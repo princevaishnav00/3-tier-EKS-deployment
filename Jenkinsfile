@@ -60,10 +60,17 @@ pipeline {
             sh '''
             git clone https://github.com/princevaishnav00/3-tier-EKS-deployment.git 
 
+<<<<<<< HEAD
             cd k8s_manifests
 
             # Update backend image
             sed -i "s|image: .*backend.*|image: public.ecr.aws/r3z4b9j4/3-tier-backend:${BUILD_NUMBER}|g" k8s/api-deployment.yaml
+=======
+                 
+            echo "Deploying Files..."
+            sh 'kubectl apply -f k8s_manifests/'
+            sh 'kubectl apply -f k8s_manifests/mongo/'
+>>>>>>> 603435953e34595dd0acd856749afe70ec2c507f
 
 
             # Update frontend image
