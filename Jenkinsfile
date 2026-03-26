@@ -70,9 +70,13 @@ pipeline {
 
             # Update frontend image
             sed -i "s|image: .*frontend.*|image: public.ecr.aws/r3z4b9j4/3-tier-frontend:${BUILD_NUMBER}|g" frontend-deployment.yaml
-              
 
+        
             # changes 
+
+            git config user.email "jenkins@devops.com"
+            git config user.name "jenkins"
+             
             git add .
             git commit -m "Update images to $IMAGE_TAG"
             git push https://$GIT_USER:$GIT_PASS@github.com/princevaishnav00/3-tier-k8s-manifests.git
