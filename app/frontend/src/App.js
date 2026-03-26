@@ -7,8 +7,6 @@ import {
   Button,
   Typography
 } from "@material-ui/core";
-import AddIcon from "@material-ui/icons/Add";
-import DeleteIcon from "@material-ui/icons/Delete";
 import "./App.css";
 
 class App extends Tasks {
@@ -28,7 +26,11 @@ class App extends Tasks {
           </Typography>
 
           {/* Add Task Form */}
-          <form onSubmit={this.handleSubmit} className="flex" style={{marginBottom:"15px"}}>
+          <form
+            onSubmit={this.handleSubmit}
+            className="flex"
+            style={{ marginBottom: "15px" }}
+          >
             <TextField
               variant="outlined"
               size="small"
@@ -43,14 +45,13 @@ class App extends Tasks {
               variant="contained"
               color="primary"
               type="submit"
-              startIcon={<AddIcon />}
             >
-              Add
+              Add Task
             </Button>
           </form>
 
           {/* Task Counter */}
-          <Typography style={{marginBottom:"10px", color:"#666"}}>
+          <Typography style={{ marginBottom: "10px", color: "#666" }}>
             {tasks.length === 0
               ? "No tasks yet 👀"
               : `${completedCount} of ${tasks.length} completed`}
@@ -78,7 +79,6 @@ class App extends Tasks {
                   variant="contained"
                   color="secondary"
                   size="small"
-                  startIcon={<DeleteIcon />}
                   onClick={() => this.handleDelete(task._id)}
                 >
                   Delete
