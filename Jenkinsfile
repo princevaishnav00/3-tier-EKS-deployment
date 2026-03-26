@@ -59,13 +59,13 @@ pipeline {
                 
             sh '''
             rm -rf manifests
-            
+
             git clone  https://$GIT_USER:$GIT_PASS@github.com/princevaishnav00/3-tier-k8s-manifests.git manifests
 
             cd manifests/k8s/
 
             # Update backend image
-            sed -i "s|image: .*backend.*|image: public.ecr.aws/r3z4b9j4/3-tier-backend:${BUILD_NUMBER}|g" api-deployment.yaml
+            sed -i "s|image: .*backend.*|image: public.ecr.aws/r3z4b9j4/3-tier-backend:${BUILD_NUMBER}|g" backend-deployment.yaml
 
 
             # Update frontend image
