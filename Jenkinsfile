@@ -60,9 +60,9 @@ pipeline {
             sh '''
             rm -rf manifests
 
-            git clone  https://$GIT_USER:$GIT_PASS@github.com/princevaishnav00/3-tier-EKS-deployment.git manifests
+            git clone  https://$GIT_USER:$GIT_PASS@github.com/princevaishnav00/3-tier-k8s-manifests.git manifests
 
-            cd manifests/k8s_manifests/
+            cd manifests/k8s/
 
             # Update backend image
             sed -i "s|image: .*backend.*|image: public.ecr.aws/r3z4b9j4/3-tier-backend:${BUILD_NUMBER}|g" backend-deployment.yaml
@@ -79,7 +79,7 @@ pipeline {
 
             git add .
             git commit -m "Update images to $IMAGE_TAG"
-            git push https://$GIT_USER:$GIT_PASS@github.com/princevaishnav00/3-tier-EKS-deployment.git
+            git push https://$GIT_USER:$GIT_PASS@github.com/princevaishnav00/3-tier-k8s-manifests.git
 
 
             '''
