@@ -1,4 +1,3 @@
-
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -37,10 +36,3 @@ spec:
               secretKeyRef:
                 name: mongo-sec
                 key: password
-        volumeMounts:
-          - name: mongo-volume
-            mountPath: /data/db
-      volumes:
-      - name: mongo-volume
-        persistentVolumeClaim:
-          claimName: mongo-pvc
