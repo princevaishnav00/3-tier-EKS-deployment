@@ -24,13 +24,12 @@
 
 /* App heading */
 .heading {
-  font-size: 35px;        
-  font-weight: 900;       
+  font-size: 24px;         
+  font-weight: 600;        
   text-align: center;
-  color: #203143;
-  margin-bottom: 40px;    
-  margin-top: 5px;
-  letter-spacing: 1px;
+  margin-bottom: 15px;
+  letter-spacing: 0.5px;
+  color: #2d3748;
 }
 
 
@@ -58,10 +57,12 @@
 .task_container {
   display: flex;
   align-items: center;
-  padding: 10px 15px;
-  border-radius: 10px;
-  transition: all 0.3s ease;
-  background-color: #fdfdfd;
+  padding: 12px 15px;
+  border-radius: 12px;
+  transition: all 0.25s ease;
+  background: #f4f7ff;               
+  border: 1px solid #e0e6ff;         
+  margin-top: 12px;
 }
 
 .task_container:hover {

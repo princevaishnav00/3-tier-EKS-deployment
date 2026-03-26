@@ -21,8 +21,8 @@ class App extends Tasks {
         <Paper elevation={3} className="container">
 
           {/* Heading */}
-          <Typography variant="h3" component="h1" className="heading">
-            DevOps Task Manager
+          <Typography className="heading"> <h1>
+            DevOps Task Manager </h1>
           </Typography>
 
           {/* Add Task Form */}
