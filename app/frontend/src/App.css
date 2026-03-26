@@ -24,11 +24,13 @@
 
 /* App heading */
 .heading {
-  font-size: 34px;
-  font-weight: 900;
+  font-size: 42px;        
+  font-weight: 900;       
   text-align: center;
-  color: #1f2d3d;
-  margin-bottom: 30px;
+  color: #1a2a3a;
+  margin-bottom: 40px;    
+  margin-top: 5px;
+  letter-spacing: 1px;
 }
 
 
