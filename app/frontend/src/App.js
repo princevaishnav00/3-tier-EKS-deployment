@@ -11,7 +11,7 @@ class App extends Tasks {
         return (
             <div className="App flex">
                 <Paper elevation={3} className="container">
-                    <div className="heading">TO-DO</div>
+                    <div className="heading">DevOps Task Manager</div>
                     <form
                         onSubmit={this.handleSubmit}
                         className="flex"
@@ -24,7 +24,7 @@ class App extends Tasks {
                             value={this.state.currentTask}
                             required={true}
                             onChange={this.handleChange}
-                            placeholder="Add New TO-DO"
+                            placeholder="Add New Task"
                         />
                         <Button
                             style={{ height: "40px" }}
@@ -32,7 +32,7 @@ class App extends Tasks {
                             variant="outlined"
                             type="submit"
                         >
-                            Add task
+                            Create task
                         </Button>
                     </form>
                     <div>
