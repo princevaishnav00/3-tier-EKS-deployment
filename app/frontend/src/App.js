@@ -21,7 +21,7 @@ class App extends Tasks {
         <Paper elevation={3} className="container">
 
           {/* Heading */}
-          <Typography className="heading">
+          <Typography variant="h3" component="h1" className="heading">
             DevOps Task Manager
           </Typography>
 
