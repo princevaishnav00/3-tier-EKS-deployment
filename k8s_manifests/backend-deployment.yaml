@@ -23,11 +23,11 @@ spec:
     spec:
       containers:
       - name: api
-        image: public.ecr.aws/r3z4b9j4/3-tier-backend:24
+        image: public.ecr.aws/r3z4b9j4/3-tier-backend:26
         imagePullPolicy: Always
         env:
           - name: MONGO_CONN_STR
-            value: mongodb://todoUSer:todoPass123123@mongodb-svc:27017/todo?authSource=admin
+            value: mongodb://admin:password123@mongodb-svc:27017/todo?authSource=admin
           - name: MONGO_USERNAME
             valueFrom:
               secretKeyRef:

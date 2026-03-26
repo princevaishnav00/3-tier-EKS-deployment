@@ -74,11 +74,10 @@ pipeline {
         
             # changes 
 
-            git config user.email "jenkins@devops.com"
-            git config user.name "jenkins"
-
             git add .
+            
             git commit -m "Update images to $IMAGE_TAG"
+
             git push https://$GIT_USER:$GIT_PASS@github.com/princevaishnav00/3-tier-k8s-manifests.git
 
 
