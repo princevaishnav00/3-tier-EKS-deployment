@@ -12,7 +12,7 @@ class Tasks extends Component {
     async componentDidMount() {
         try {
             const { data } = await getTasks();
-            this.setState({ tasks: data });
+            this.setState({ tasks: data.tasks });
         } catch (error) {
             console.log(error);
         }
