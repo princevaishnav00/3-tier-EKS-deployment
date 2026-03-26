@@ -1,73 +1,97 @@
 import React from "react";
 import Tasks from "./Tasks";
-import { Paper, TextField } from "@material-ui/core";
-import { Checkbox, Button } from "@material-ui/core";
+import {
+  Paper,
+  TextField,
+  Checkbox,
+  Button,
+  Typography
+} from "@material-ui/core";
+import AddIcon from "@material-ui/icons/Add";
+import DeleteIcon from "@material-ui/icons/Delete";
 import "./App.css";
 
 class App extends Tasks {
-    state = { tasks: [], currentTask: "" };
-    render() {
-        const { tasks } = this.state;
-        return (
-            <div className="App flex">
-                <Paper elevation={3} className="container">
-                    <div className="heading">DevOps Task Manager</div>
-                    <form
-                        onSubmit={this.handleSubmit}
-                        className="flex"
-                        style={{ margin: "15px 0" }}
-                    >
-                        <TextField
-                            variant="outlined"
-                            size="small"
-                            style={{ width: "80%" }}
-                            value={this.state.currentTask}
-                            required={true}
-                            onChange={this.handleChange}
-                            placeholder="Add New Task"
-                        />
-                        <Button
-                            style={{ height: "40px" }}
-                            color="primary"
-                            variant="outlined"
-                            type="submit"
-                        >
-                            Create task
-                        </Button>
-                    </form>
-                    <div>
-                        {tasks.map((task) => (
-                            <Paper
-                                key={task._id}
-                                className="flex task_container"
-                            >
-                                <Checkbox
-                                    checked={task.completed}
-                                    onClick={() => this.handleUpdate(task._id)}
-                                    color="primary"
-                                />
-                                <div
-                                    className={
-                                        task.completed
-                                            ? "task line_through"
-                                            : "task"
-                                    }
-                                >
-                                    {task.task}
-                                </div>
-                                <Button
-                                    onClick={() => this.handleDelete(task._id)}
-                                    color="secondary"
-                                >
-                                    delete
-                                </Button>
-                            </Paper>
-                        ))}
-                    </div>
-                </Paper>
-            </div>
-        );
-    }
+  state = { tasks: [], currentTask: "" };
+
+  render() {
+    const { tasks, currentTask } = this.state;
+    const completedCount = tasks.filter(t => t.completed).length;
+
+    return (
+      <div className="App">
+        <Paper elevation={3} className="container">
+
+          {/* Heading */}
+          <Typography className="heading">
+            DevOps Task Manager
+          </Typography>
+
+          {/* Add Task Form */}
+          <form onSubmit={this.handleSubmit} className="flex" style={{marginBottom:"15px"}}>
+            <TextField
+              variant="outlined"
+              size="small"
+              value={currentTask}
+              required
+              onChange={this.handleChange}
+              placeholder="Add a new task..."
+              fullWidth
+            />
+
+            <Button
+              variant="contained"
+              color="primary"
+              type="submit"
+              startIcon={<AddIcon />}
+            >
+              Add
+            </Button>
+          </form>
+
+          {/* Task Counter */}
+          <Typography style={{marginBottom:"10px", color:"#666"}}>
+            {tasks.length === 0
+              ? "No tasks yet 👀"
+              : `${completedCount} of ${tasks.length} completed`}
+          </Typography>
+
+          {/* Task List */}
+          <div>
+            {tasks.map((task) => (
+              <Paper key={task._id} className="task_container">
+
+                <Checkbox
+                  checked={task.completed}
+                  onClick={() => this.handleUpdate(task._id)}
+                  color="primary"
+                  size="medium"
+                />
+
+                <Typography
+                  className={task.completed ? "task line_through" : "task"}
+                >
+                  {task.task}
+                </Typography>
+
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  size="small"
+                  startIcon={<DeleteIcon />}
+                  onClick={() => this.handleDelete(task._id)}
+                >
+                  Delete
+                </Button>
+
+              </Paper>
+            ))}
+          </div>
+
+        </Paper>
+      </div>
+    );
+  }
 }
 
 export default App;
