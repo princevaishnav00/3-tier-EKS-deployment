@@ -60,13 +60,13 @@
   padding: 12px 15px;
   border-radius: 12px;
   transition: all 0.25s ease;
-  background: #f4f7ff;               
+  background: #b4c1e6;               
   border: 1px solid #e0e6ff;         
   margin-top: 12px;
 }
 
 .task_container:hover {
-  background-color: #f0f0f0;
+  background-color: #cfa3a3;
 }
 
 /* Task text */

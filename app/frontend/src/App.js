@@ -53,7 +53,7 @@ class App extends Tasks {
           {/* Task Counter */}
           <Typography style={{ marginBottom: "10px", color: "#666" }}>
             {tasks.length === 0
-              ? "No tasks yet "
+              ? "No tasks yet ..."
               : `${completedCount} of ${tasks.length} completed`}
           </Typography>
 
