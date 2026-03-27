@@ -89,10 +89,6 @@ User
 
 ---
 
-## Screenshots
-
-(Add Jenkins, Argo CD, Grafana, and Application UI screenshots here)
-
 ---
 
 ## ⭐ Conclusion :
