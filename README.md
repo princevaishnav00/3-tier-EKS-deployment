@@ -12,16 +12,16 @@ This project demonstrates a **production-like end-to-end DevOps pipeline** using
 ## 🛠️ Tech Stack & Tools :
 
 
-| Category       |  Tools Used         |
-| ---------------| ------------------- |
-| Cloud          | AWS (EKS, ECR, ELB) |
-| Container      | Docker              |
-| Orchestration  | Kubernetes          |
-| CI/CD          | Jenkins, Argo CD    |
-| Monitoring     | Prometheus, Grafana |
-| Frontend       | React               |
-| Backend        | Node.js             |
-|  atabase       | MongoDB             |
+| Category       |   Tools Used           |
+| ---------------| ---------------------- |
+| Cloud          |  AWS (EKS, ECR, ELB)   |
+| Container      |  Docker                |
+| Orchestration  |  Kubernetes            |
+| CI/CD          |  Jenkins, Argo CD      |
+| Monitoring     |  Prometheus, Grafana   |
+| Frontend       |  React                 |
+| Backend        |  Node.js               |
+|  atabase       |  MongoDB               |
 
 
 ----------------------------------------------------------------------------------------------------
