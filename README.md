@@ -31,7 +31,7 @@ This project demonstrates a **production-like end-to-end DevOps pipeline** using
 
 
 <p align="center">
-  <img src="./Architecture.png" alt="Architecture Diagram" width="800"/>
+  <img src="./Screenshots/Architecture.png" alt="Architecture Diagram" width="800"/>
 </p>
 
 
