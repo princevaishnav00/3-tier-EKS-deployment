@@ -1,13 +1,13 @@
- 🚀 3-Tier DevOps Project on AWS EKS (CI/CD with Jenkins & Argo CD)
+🚀 3-Tier DevOps Project on AWS EKS (CI/CD with Jenkins & Argo CD)
  
  
- 📌 Project Overview
-This project demonstrates a production-like end-to-end DevOps pipeline using a 3-tier architecture deployed on AWS EKS (Kubernetes).
-
-The application consists of:
-• 🎨 Frontend (React)
-• ⚙️ Backend (Node.js API)
-• 🗄️ Database (MongoDB)
+ 📌 Project Overview :
+ This project demonstrates a production-like end-to-end DevOps pipeline using a 3-tier architecture deployed on AWS EKS (Kubernetes).
+ 
+🧩 Application Components :
+   • Frontend (React)
+   • Backend (Node.js API)
+   • Database (MongoDB)
 
 The project implements CI/CD using Jenkins and Argo CD (GitOps model) along with monitoring using Prometheus and Grafana.
 
@@ -20,7 +20,7 @@ User → AWS Load Balancer (Ingress)
      → Backend (Node.js API)
      → MongoDB (Database)
      
-CI/CD Flow:
+🔄 CI/CD Flow 
 
 GitHub → Jenkins (CI)
         → Docker Build & Push (ECR)
@@ -44,23 +44,21 @@ GitHub → Jenkins (CI)
 
 
 
-⚙️ CI/CD Pipeline
+⚙️ CI/CD Pipeline :
 
 🔹Continuous Integration (Jenkins)
-
-• Clone source code from GitHub
-• Build Docker images (Frontend & Backend)
-• Push images to AWS ECR
-• Update Kubernetes manifest files (image tag)
+  • Clone source code from GitHub
+  • Build Docker images (Frontend & Backend)
+  • Push images to AWS ECR
+  • Update Kubernetes manifest files (image tag)
 
 🔹Continuous Deployment (Argo CD)
+  • Monitors Git repository for changes
+  • Automatically syncs manifests
+  • Deploys latest version to EKS cluster
 
-• Monitors Git repository for changes
-• Automatically syncs manifests
-• Deploys latest version to EKS cluster
 
-
-☸️ Kubernetes Components
+☸️ Kubernetes Components :
 
 • Deployments :
   → Frontend Deployment
@@ -89,18 +87,20 @@ GitHub → Jenkins (CI)
 🔐 Security
 • Sensitive data (MongoDB credentials) stored using Kubernetes Secrets
 
- 🚀 Features
+ 
+ 
+  🚀 Features :
 
-• ✅ 3-tier architecture (Frontend, Backend, Database)
-• ✅ Dockerized microservices
-• ✅ CI/CD pipeline with Jenkins
-• ✅ GitOps deployment using Argo CD
-• ✅ Kubernetes (EKS) deployment
-• ✅ Monitoring with Prometheus & Grafana
-• ✅ AWS Load Balancer (Ingress)
+ ✅ 3-tier architecture (Frontend, Backend, Database)
+ ✅ Dockerized microservices
+ ✅ CI/CD pipeline with Jenkins
+ ✅ GitOps deployment using Argo CD
+ ✅ Kubernetes (EKS) deployment
+ ✅ Monitoring with Prometheus & Grafana
+ ✅ AWS Load Balancer (Ingress)
 
 
- ⭐ Conclusion
+ ⭐ Conclusion :
 
 This project demonstrates real-world DevOps practices including:
 
