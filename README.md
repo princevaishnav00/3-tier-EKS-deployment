@@ -1,112 +1,112 @@
-🚀 3-Tier DevOps Project on AWS EKS (CI/CD with Jenkins & Argo CD)
- 
- 
- 📌 Project Overview :
- This project demonstrates a production-like end-to-end DevOps pipeline using a 3-tier architecture deployed on AWS EKS (Kubernetes).
- 
-🧩 Application Components :
-   • Frontend (React)
-   • Backend (Node.js API)
-   • Database (MongoDB)
+# 🚀 3-Tier DevOps Project on AWS EKS (CI/CD with Jenkins & Argo CD)
 
-The project implements CI/CD using Jenkins and Argo CD (GitOps model) along with monitoring using Prometheus and Grafana.
+This project demonstrates a production-ready **3-tier DevOps architecture** deployed on **AWS EKS (Kubernetes)** with a complete **CI/CD pipeline using Jenkins and Argo CD (GitOps model)**.
 
+The application consists of a **React frontend**, **Node.js backend**, and **MongoDB database**, along with **monitoring using Prometheus and Grafana**.
 
+-----------------------------------------------------------------------------------------------
 
-🏗️ Architecture
+## Architecture Overview
 
-User → AWS Load Balancer (Ingress)
-     → Frontend (React)
-     → Backend (Node.js API)
-     → MongoDB (Database)
-     
-🔄 CI/CD Flow 
+### Tech Stack & Tools
 
-GitHub → Jenkins (CI)
-        → Docker Build & Push (ECR)
-        → Update Kubernetes Manifests Repo
-        → Argo CD (CD - GitOps)
-        → EKS Deployment
+* Frontend: React
+* Backend: Node.js (REST APIs)
+* Database: MongoDB
+* Containerization: Docker
+* Orchestration: Kubernetes (EKS)
+* CI/CD: Jenkins + Argo CD
+* Monitoring: Prometheus & Grafana
+* Cloud: AWS (EKS, ECR, ELB)
 
+----------------------------------------------------------------------------------------------------
 
-🛠️ Tech Stack :
+## Application Architecture
 
-|  Category      | Tools Used          |
-| -------------- | ------------------- |
-|  Cloud         | AWS (EKS, ECR, ELB) |
-|  Container     | Docker              |
-|  Orchestration | Kubernetes          |
-|  CI/CD         | Jenkins, Argo CD    |
-|  Monitoring    | Prometheus, Grafana |
-|  Frontend      | React               |
-|  Backend       | Node.js             |
-|  Database      | MongoDB             |
+User
+→ AWS Load Balancer (Ingress)
+→ Frontend (React)
+→ Backend (Node.js API)
+→ MongoDB
 
+---
 
+## CI/CD Workflow
 
-⚙️ CI/CD Pipeline :
+1. Developer pushes code to GitHub
+2. Jenkins pipeline is triggered
+3. Docker images are built (Frontend & Backend)
+4. Images are pushed to AWS ECR
+5. Kubernetes manifests are updated
+6. Argo CD detects changes (GitOps)
+7. Application is deployed to AWS EKS
 
-🔹Continuous Integration (Jenkins)
-  • Clone source code from GitHub
-  • Build Docker images (Frontend & Backend)
-  • Push images to AWS ECR
-  • Update Kubernetes manifest files (image tag)
+---
 
-🔹Continuous Deployment (Argo CD)
-  • Monitors Git repository for changes
-  • Automatically syncs manifests
-  • Deploys latest version to EKS cluster
+## Kubernetes Components
 
+* Frontend Deployment
 
-☸️ Kubernetes Components :
+* Backend Deployment
 
-• Deployments :
-  → Frontend Deployment
-  → Backend Deployment
-  → MongoDB Deployment
+* MongoDB Deployment
 
-• Services:
-  → Internal communication between services
+* Services for internal communication
 
-• Ingress / Load Balancer
-  → Exposes application externally
+* Ingress / AWS Load Balancer for external access
 
-• Secrets
-  → Secure MongoDB credentials
+* Kubernetes Secrets for storing MongoDB credentials
 
+---
 
- 📊 Monitoring
+## Monitoring & Observability
 
-• Prometheus
-  → Collects metrics from Kubernetes cluster
+* Prometheus collects cluster and application metrics
+* Grafana visualizes CPU, memory, and pod performance
 
-• Grafana
-  → Visualizes CPU, memory, and pod metrics
+---
 
+## Security
 
-🔐 Security
-• Sensitive data (MongoDB credentials) stored using Kubernetes Secrets
+* Sensitive data is managed using Kubernetes Secrets
 
- 
- 
-  🚀 Features :
+---
 
- ✅ 3-tier architecture (Frontend, Backend, Database)
- ✅ Dockerized microservices
- ✅ CI/CD pipeline with Jenkins
- ✅ GitOps deployment using Argo CD
- ✅ Kubernetes (EKS) deployment
- ✅ Monitoring with Prometheus & Grafana
- ✅ AWS Load Balancer (Ingress)
+## Features
 
+* 3-tier architecture (Frontend, Backend, Database)
+* Dockerized microservices
+* CI/CD pipeline with Jenkins
+* GitOps deployment using Argo CD
+* Kubernetes deployment on AWS EKS
+* Monitoring with Prometheus & Grafana
+* AWS Load Balancer (Ingress)
 
- ⭐ Conclusion :
+---
 
-This project demonstrates real-world DevOps practices including:
+## Future Improvements
 
-• CI/CD automation
-• GitOps deployment
-• Kubernetes orchestration
-• Monitoring and observability
+* Use StatefulSet with Persistent Volumes for MongoDB
+* Implement Horizontal Pod Autoscaler (HPA)
+* Optimize Docker images using multi-stage builds
+* Add CI checks (testing, linting, security scanning)
 
+---
 
+## Screenshots
+
+(Add Jenkins, Argo CD, Grafana, and Application UI screenshots here)
+
+---
+
+## Author
+
+Prince Vaishnav
+
+---
+
+## Conclusion
+
+This project demonstrates real-world DevOps practices including CI/CD automation, GitOps deployment, Kubernetes orchestration, and monitoring.
+
+⭐ If you like this project, feel free to give it a star!
