@@ -29,17 +29,19 @@ GitHub → Jenkins (CI)
         → EKS Deployment
 
 
-🛠️ Tech Stack
+🛠️ Tech Stack :
 
-• Cloud: AWS (EKS, ECR, ELB)
-• Containerization: Docker
-• Orchestration: Kubernetes
-• CI: Jenkins
-• CD: Argo CD (GitOps)
-• Monitoring: Prometheus & Grafana
-• Frontend: React
-• Backend: Node.js
-• Database: MongoDB
+|  Category      | Tools Used          |
+| -------------- | ------------------- |
+|  Cloud         | AWS (EKS, ECR, ELB) |
+|  Container     | Docker              |
+|  Orchestration | Kubernetes          |
+|  CI/CD         | Jenkins, Argo CD    |
+|  Monitoring    | Prometheus, Grafana |
+|  Frontend      | React               |
+|  Backend       | Node.js             |
+|  Database      | MongoDB             |
+
 
 
 ⚙️ CI/CD Pipeline
