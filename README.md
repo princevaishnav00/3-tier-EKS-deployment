@@ -28,6 +28,15 @@ This project demonstrates a **production-like end-to-end DevOps pipeline** using
 
 ## 🏗️ Application Architecture :
 
+
+
+<p align="center">
+  <img src="./Architecture.png" alt="Architecture Diagram" width="800"/>
+</p>
+
+
+
+
 User
 → AWS Load Balancer (Ingress)
 → Frontend (React)
