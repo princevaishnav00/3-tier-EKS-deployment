@@ -48,7 +48,7 @@ User
 
 ---
 
-## Kubernetes Components
+## ☸️ Kubernetes Components
 
 * Frontend Deployment
 
@@ -71,7 +71,7 @@ User
 
 ---
 
-## Security
+## 🔐 Security
 
 * Sensitive data is managed using Kubernetes Secrets
 
@@ -79,13 +79,13 @@ User
 
 ## 🚀 Features :
  
- ✅ 3-tier architecture (Frontend, Backend, Database)
- ✅ Dockerized microservices
- ✅ CI/CD pipeline with Jenkins
- ✅ GitOps deployment using Argo CD
- ✅ Kubernetes deployment on AWS EKS
- ✅ Monitoring with Prometheus & Grafana
- ✅ AWS Load Balancer (Ingress)
+* ✅ 3-tier architecture (Frontend, Backend, Database)
+* ✅ Dockerized microservices
+* ✅ CI/CD pipeline with Jenkins
+* ✅ GitOps deployment using Argo CD
+* ✅ Kubernetes deployment on AWS EKS
+* ✅ Monitoring with Prometheus & Grafana
+* ✅ AWS Load Balancer (Ingress)
 
 ---
 
@@ -97,5 +97,9 @@ User
 
 ## ⭐ Conclusion :
 
-This project demonstrates real-world DevOps practices including CI/CD automation, GitOps deployment, Kubernetes orchestration, and monitoring.
+This project demonstrates real-world DevOps practices including :
+* CI/CD automation
+* GitOps deployment
+* Kubernetes orchestration
+* Monitoring and observability
 
