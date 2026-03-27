@@ -26,7 +26,7 @@ This project demonstrates a **production-like end-to-end DevOps pipeline** using
 
 ----------------------------------------------------------------------------------------------------
 
-## Application Architecture :
+## 🏗️ Application Architecture :
 
 User
 → AWS Load Balancer (Ingress)
@@ -36,7 +36,7 @@ User
 
 ---
 
-## CI/CD Workflow :
+## ⚙️ CI/CD Workflow :
 
 1. Developer pushes code to GitHub
 2. Jenkins pipeline is triggered
@@ -64,7 +64,7 @@ User
 
 ---
 
-## Monitoring & Observability
+## 📊 Monitoring & Observability
 
 * Prometheus collects cluster and application metrics
 * Grafana visualizes CPU, memory, and pod performance
@@ -77,24 +77,15 @@ User
 
 ---
 
-## Features
-
-* 3-tier architecture (Frontend, Backend, Database)
-* Dockerized microservices
-* CI/CD pipeline with Jenkins
-* GitOps deployment using Argo CD
-* Kubernetes deployment on AWS EKS
-* Monitoring with Prometheus & Grafana
-* AWS Load Balancer (Ingress)
-
----
-
-## Future Improvements
-
-* Use StatefulSet with Persistent Volumes for MongoDB
-* Implement Horizontal Pod Autoscaler (HPA)
-* Optimize Docker images using multi-stage builds
-* Add CI checks (testing, linting, security scanning)
+## 🚀 Features :
+ 
+ ✅ 3-tier architecture (Frontend, Backend, Database)
+ ✅ Dockerized microservices
+ ✅ CI/CD pipeline with Jenkins
+ ✅ GitOps deployment using Argo CD
+ ✅ Kubernetes deployment on AWS EKS
+ ✅ Monitoring with Prometheus & Grafana
+ ✅ AWS Load Balancer (Ingress)
 
 ---
 
@@ -104,14 +95,7 @@ User
 
 ---
 
-## Author
-
-Prince Vaishnav
-
----
-
-## Conclusion
+## ⭐ Conclusion :
 
 This project demonstrates real-world DevOps practices including CI/CD automation, GitOps deployment, Kubernetes orchestration, and monitoring.
 
-⭐ If you like this project, feel free to give it a star!
