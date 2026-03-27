@@ -21,7 +21,7 @@ This project demonstrates a **production-like end-to-end DevOps pipeline** using
 | Monitoring     |  Prometheus, Grafana   |
 | Frontend       |  React                 |
 | Backend        |  Node.js               |
-|  atabase       |  MongoDB               |
+| Database       |  MongoDB               |
 
 
 ----------------------------------------------------------------------------------------------------
