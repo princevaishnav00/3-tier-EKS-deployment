@@ -89,8 +89,6 @@ User
 
 ---
 
----
-
 ## ⭐ Conclusion :
 
 This project demonstrates real-world DevOps practices including :
