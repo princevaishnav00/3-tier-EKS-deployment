@@ -1,27 +1,30 @@
-# 🚀 3-Tier DevOps Project on AWS EKS (CI/CD with Jenkins & Argo CD)
+# 🚀 3-Tier DevOps Project on AWS EKS (CI/CD with Jenkins & Argo CD) :
 
-This project demonstrates a production-ready **3-tier DevOps architecture** deployed on **AWS EKS (Kubernetes)** with a complete **CI/CD pipeline using Jenkins and Argo CD (GitOps model)**.
+This project demonstrates a **production-like end-to-end DevOps pipeline** using a **3-tier architecture** deployed on **AWS EKS (Kubernetes).** with a complete **CI/CD pipeline using Jenkins and Argo CD (GitOps model)**.
 
-The application consists of a **React frontend**, **Node.js backend**, and **MongoDB database**, along with **monitoring using Prometheus and Grafana**.
+🧩 Application Components:
+  * Frontend – React
+  * Backend – Node.js API
+  * Database – MongoDB
 
 -----------------------------------------------------------------------------------------------
 
-## Architecture Overview
+## 🛠️ Tech Stack & Tools :
 
-### Tech Stack & Tools
-
-* Frontend: React
-* Backend: Node.js (REST APIs)
-* Database: MongoDB
-* Containerization: Docker
-* Orchestration: Kubernetes (EKS)
-* CI/CD: Jenkins + Argo CD
-* Monitoring: Prometheus & Grafana
-* Cloud: AWS (EKS, ECR, ELB)
+|  Category      | Tools Used          |
+| ---------------  ------------------- |
+|  Cloud         | AWS (EKS, ECR, ELB) |
+|  Container     | Docker              |
+|  Orchestration | Kubernetes          |
+|  CI/CD         | Jenkins, Argo CD    |
+|  Monitoring    | Prometheus, Grafana |
+|  Frontend      | React               |
+|  Backend       | Node.js             |
+|  Database      | MongoDB             |
 
 ----------------------------------------------------------------------------------------------------
 
-## Application Architecture
+## Application Architecture :
 
 User
 → AWS Load Balancer (Ingress)
@@ -31,7 +34,7 @@ User
 
 ---
 
-## CI/CD Workflow
+## CI/CD Workflow :
 
 1. Developer pushes code to GitHub
 2. Jenkins pipeline is triggered
